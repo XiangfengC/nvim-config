@@ -1,6 +1,10 @@
 " Save key strokes (now we do not need to press shift to enter command mode).
 " Vim-sneak has also mapped `;`, so using the below mapping will break the map
 " used by vim-sneak
+
+noremap <Space> <nop>
+let mapleader =" "
+
 nnoremap ; :
 xnoremap ; :
 
@@ -37,7 +41,7 @@ nnoremap <silent> ]Q :<C-U>clast<CR>zv
 
 " Close location list or quickfix list if they are present,
 " see https://superuser.com/q/355325/736190
-nnoremap<silent> \x :<C-U>windo lclose <bar> cclose<CR>
+nnoremap <silent> \x :<C-U>windo lclose <bar> cclose<CR>
 
 " Close a buffer and switching to another buffer, do not close the
 " window, see https://stackoverflow.com/q/4465095/6064933
@@ -49,7 +53,7 @@ nnoremap <expr> <Space>o printf('m`%so<ESC>``', v:count1)
 nnoremap <expr> <Space>O printf('m`%sO<ESC>``', v:count1)
 
 " Insert a space after current character
-nnoremap <Space><Space> a<Space><ESC>h
+" nnoremap <Space><Space> a<Space><ESC>h
 
 " Move the cursor based on physical lines, not the actual lines.
 nnoremap <expr> j (v:count == 0 ? 'gj' : 'j')
@@ -121,7 +125,7 @@ nnoremap cc "_cc
 xnoremap c "_c
 
 " Remove trailing whitespace characters
-nnoremap <silent> <leader><Space> :<C-U>StripTrailingWhitespace<CR>
+" nnoremap <silent> <leader><Space> :<C-U>StripTrailingWhitespace<CR>
 
 " check the syntax group of current cursor position
 nnoremap <silent> <leader>st :<C-U>call utils#SynGroup()<CR>
@@ -149,13 +153,13 @@ xnoremap <silent> <A-j> :<C-U>call utils#MoveSelection('down')<CR>
 " register, see also https://stackoverflow.com/q/10723700/6064933.
 xnoremap p "_c<ESC>p
 
-nnoremap <silent> gb :<C-U>call buf_utils#GoToBuffer(v:count, 'forward')<CR>
+nnoremap <silent> gb :<c-u>call buf_utils#GoToBuffer(v:count, 'forward')<CR>
 nnoremap <silent> gB :<C-U>call buf_utils#GoToBuffer(v:count, 'backward')<CR>
 
-nnoremap <Left> <C-W>h
-nnoremap <Right> <C-W>l
-nnoremap <Up> <C-W>k
-nnoremap <Down> <C-W>j
+nnoremap <C-h> <C-W>h
+nnoremap <C-l> <C-W>l
+nnoremap <C-k> <C-W>k
+nnoremap <C-j> <C-W>j
 
 " Text objects for URL
 xnoremap <silent> iu :<C-U>call text_obj#URL()<CR>
@@ -176,6 +180,10 @@ endfor
 
 " insert semicolon in the end
 inoremap <A-;> <ESC>miA;<ESC>`ii
+inoremap <A-}> <ESC>miA}<ESC>`ii
+inoremap <A-]> <ESC>miA]<ESC>`ii
+inoremap <A-'> <ESC>miA'<ESC>`ii
+inoremap <A-"> <ESC>miA"<ESC>`ii
 
 " Keep cursor position after yanking
 nnoremap y myy
