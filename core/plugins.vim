@@ -3,6 +3,8 @@ scriptencoding utf-8
 " Plugin specification and lua stuff
 lua require('lua-init')
 
+let g:python3_host_prog = 'C:\Python310\python.exe'
+
 " Use short names for common plugin manager commands to simplify typing.
 " To use these shortcuts: first activate command line with `:`, then input the
 " short alias, e.g., `pi`, then press <space>, the alias will be expanded to
